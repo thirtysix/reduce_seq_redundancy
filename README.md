@@ -17,7 +17,7 @@ Iterate through each transcript in the dictionary and:
  6. Keep all other entries which have not included in any cluster.
 
 ## Output
-- A FASTA file all cluster representative sequences and non-clustered sequences.
+- A FASTA file of all cluster representative sequences and non-clustered sequences.
 
 ## Dependencies
 - Currently only tested on Linux
