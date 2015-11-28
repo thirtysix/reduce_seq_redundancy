@@ -145,7 +145,7 @@ def write_cleaned_entries(cleaned_output_list, unique_entries_outfilename, input
 # Initiating Variables #########################################################
 ################################################################################
 # enter name of starting sequence file
-input_seqs_filename = "./all.results.fasta.unique_seq"
+input_seqs_filename = "./"
 
 
 dist_mat_outfilename = "./distance_matrix.mat"
