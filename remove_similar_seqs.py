@@ -6,6 +6,7 @@ import os
 from Bio import SeqIO
 from operator import itemgetter
 import re
+import time
 
 ################################################################################
 # Functions ####################################################################
@@ -145,7 +146,7 @@ def write_cleaned_entries(cleaned_output_list, unique_entries_outfilename, input
 # Initiating Variables #########################################################
 ################################################################################
 # enter name of starting sequence file
-input_seqs_filename = ""
+input_seqs_filename = "./all.results.fasta.unique_seq"
 
 
 dist_mat_outfilename = "./distance_matrix.mat"
@@ -157,14 +158,15 @@ similarity_thresh = 0.10
 ################################################################################
 # Execution ####################################################################
 ################################################################################
+start_time = time.time()
+clustalo(input_seqs_filename, dist_mat_outfilename, alignment_outfilename)
 distances_dict = parse_matrix(dist_mat_outfilename)
 input_seqs = sequence_list(input_seqs_filename)
 similar_indexes_dict = cluster_similar(distances_dict, similarity_thresh)
 cleaned_output_list, to_ignore_list = prune_clusters(input_seqs, similar_indexes_dict, distances_dict)
-
 write_cleaned_entries(cleaned_output_list, unique_entries_outfilename, input_seqs)
-
-##sorted_similarity_list = remove_similar(distances_dict, similarity_thresh)
+end_time = time.time()
+print "total time", end_time-start_time, "seconds"
 
 
 
